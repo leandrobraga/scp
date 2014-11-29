@@ -57,20 +57,20 @@ class PatientWindow(wx.MiniFrame):
 
         self.toolBar = wx.ToolBar(self,id=wx.ID_ANY,pos=wx.DefaultPosition,size=wx.DefaultSize,style=wx.TB_TEXT)
 
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_FIRST,"Primeiro", wx.Bitmap("./imagens/first.png"),shortHelp='Ir para o primeiro registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_PREVIOUS,"Anterior", wx.Bitmap("./imagens/previous.png"),shortHelp='Registro anterior')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_NEXT,"Próximo", wx.Bitmap("./imagens/next.png"),shortHelp='Próximo registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_LAST,"Último", wx.Bitmap("./imagens/last.png"),shortHelp='Ir para o último registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_FIRST,u"Primeiro", wx.Bitmap("./imagens/first.png"),shortHelp='Ir para o primeiro registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_PREVIOUS,u"Anterior", wx.Bitmap("./imagens/previous.png"),shortHelp='Registro anterior')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_NEXT,u"Próximo", wx.Bitmap("./imagens/next.png"),shortHelp='Próximo registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_LAST,u"Último", wx.Bitmap("./imagens/last.png"),shortHelp='Ir para o último registro')
         self.toolBar.AddSeparator()
         self.toolBar.AddSeparator()
 
 
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_NEW,"Novo (F2)", wx.Bitmap("./imagens/add.png"),shortHelp='Novo Registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_SAVE,"Salvar", wx.Bitmap("./imagens/filesave.png"),shortHelp='Grava alterções no registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_REMOVE,"Remover", wx.Bitmap("./imagens/remove.png"),shortHelp='Remove o registro atual')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_FIND,"Localizar", wx.Bitmap("./imagens/find.png"),shortHelp='Localiza um Registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_EDIT,"ALterar", wx.Bitmap("./imagens/edit.png"),shortHelp='Altera o registro atual')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_CANCEL,"Cancelar", wx.Bitmap("./imagens/cancel.png"),shortHelp='Cancela ação')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_NEW,u"Novo (F2)", wx.Bitmap("./imagens/add.png"),shortHelp='Novo Registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_SAVE,u"Salvar", wx.Bitmap("./imagens/filesave.png"),shortHelp='Grava alterções no registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_REMOVE,u"Remover", wx.Bitmap("./imagens/remove.png"),shortHelp='Remove o registro atual')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_FIND,u"Localizar", wx.Bitmap("./imagens/find.png"),shortHelp='Localiza um Registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_EDIT,u"ALterar", wx.Bitmap("./imagens/edit.png"),shortHelp='Altera o registro atual')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_PATIENT_CANCEL,u"Cancelar", wx.Bitmap("./imagens/cancel.png"),shortHelp='Cancela ação')
 
         self.toolBar.EnableTool(ID_TOOLBAR_PATIENT_SAVE, False)
 
@@ -85,12 +85,12 @@ class PatientWindow(wx.MiniFrame):
         self.idTextCtrl = wx.TextCtrl(self.panelPatient,-1,pos=(10,15),size=(0,0))
         self.hBox2.Add( self.idTextCtrl,1, wx.LEFT,8)
 
-        self.nameStaticText = wx.StaticText(self.panelPatient,-1,'Nome',pos=(18,30),style=wx.ALIGN_LEFT)
+        self.nameStaticText = wx.StaticText(self.panelPatient,-1,u'Nome',pos=(18,30),style=wx.ALIGN_LEFT)
         self.nameTextCtrl = wx.TextCtrl(self.panelPatient,-1,pos=(18,50),size=(400,-1),style=wx.TE_READONLY)
         self.hBox1.Add(self.nameStaticText, 1, wx.LEFT,8)
         self.hBox2.Add( self.nameTextCtrl,1, wx.LEFT,8)
 
-        self.dateOfBirthStaticText = wx.StaticText(self.panelPatient,-1,'Data de Nasc.',pos=(460,30),style=wx.ALIGN_LEFT)
+        self.dateOfBirthStaticText = wx.StaticText(self.panelPatient,-1,u'Data de Nasc.',pos=(460,30),style=wx.ALIGN_LEFT)
         self.dateOfBirthTextCtrl = masked.TextCtrl(self.panelPatient,-1,mask="##/##/####")
         self.dateOfBirthTextCtrl.SetSize((90,-1))
         self.dateOfBirthTextCtrl.SetPosition((460,50))
@@ -98,7 +98,7 @@ class PatientWindow(wx.MiniFrame):
         self.hBox1.Add(self.dateOfBirthStaticText,1,8)
         self.hBox2.Add(self.dateOfBirthTextCtrl,1,8)
 
-        self.cpfStaticText = wx.StaticText(self.panelPatient,-1,'CPF',pos=(18,90),style=wx.ALIGN_LEFT)
+        self.cpfStaticText = wx.StaticText(self.panelPatient,-1,u'CPF',pos=(18,90),style=wx.ALIGN_LEFT)
         self.cpfTextCtrl = masked.TextCtrl(self.panelPatient,-1,mask="###.###.###-##")
         self.cpfTextCtrl.SetSize((120,-1))
         self.cpfTextCtrl.SetPosition((18,110))
@@ -106,12 +106,12 @@ class PatientWindow(wx.MiniFrame):
         self.hBox1.Add(self.cpfStaticText,1,8)
         self.hBox2.Add( self.cpfTextCtrl,1,8)
 
-        self.rgStaticText = wx.StaticText(self.panelPatient,-1,'RG',pos=(170,90),style=wx.ALIGN_LEFT)
+        self.rgStaticText = wx.StaticText(self.panelPatient,-1,u'RG',pos=(170,90),style=wx.ALIGN_LEFT)
         self.rgTextCtrl = wx.TextCtrl(self.panelPatient,-1,pos=(170,110),size=(120,-1),style=wx.TE_READONLY)
         self.hBox1.Add(self.rgStaticText,1,8)
         self.hBox2.Add( self.rgTextCtrl,1,8)
 
-        self.telephoneStaticText = wx.StaticText(self.panelPatient,-1,'Telefone',pos=(18,150),style=wx.ALIGN_LEFT)
+        self.telephoneStaticText = wx.StaticText(self.panelPatient,-1,u'Telefone',pos=(18,150),style=wx.ALIGN_LEFT)
         self.telephoneTextCtrl =  masked.TextCtrl(self.panelPatient,-1,mask="(##)####-####")
         self.telephoneTextCtrl.SetSize((120,-1))
         self.telephoneTextCtrl.SetPosition((18,170))
@@ -119,7 +119,7 @@ class PatientWindow(wx.MiniFrame):
         self.hBox1.Add(self.telephoneStaticText, 1,8)
         self.hBox2.Add( self.telephoneTextCtrl,1,8)
 
-        self.telephone2StaticText = wx.StaticText(self.panelPatient,-1,'Telefone 2',pos=(170,150),style=wx.ALIGN_LEFT)
+        self.telephone2StaticText = wx.StaticText(self.panelPatient,-1,u'Telefone 2',pos=(170,150),style=wx.ALIGN_LEFT)
         self.telephone2TextCtrl =  masked.TextCtrl(self.panelPatient,-1,mask="(##)####-####")
         self.telephone2TextCtrl.SetSize((120,-1))
         self.telephone2TextCtrl.SetPosition((170,170))
@@ -127,9 +127,9 @@ class PatientWindow(wx.MiniFrame):
         self.hBox1.Add(self.telephone2StaticText, 1,8)
         self.hBox2.Add( self.telephone2TextCtrl,1,8)
 
-        wx.StaticBox(self.panelPatient,-1,'Informações Pessoais',pos=(5,5),size=(600,220))
+        wx.StaticBox(self.panelPatient,-1,u'Informações Pessoais',pos=(5,5),size=(600,220))
 
-        self.treatmentStartStaticText = wx.StaticText(self.panelPatient,-1,'Início do Trat.',pos=(18,250),style=wx.ALIGN_LEFT)
+        self.treatmentStartStaticText = wx.StaticText(self.panelPatient,-1,u'Início do Trat.',pos=(18,250),style=wx.ALIGN_LEFT)
         self.treatmentStartTextCtrl = masked.TextCtrl(self.panelPatient,-1,mask="##/##/####")
         self.treatmentStartTextCtrl.SetSize((100,-1))
         self.treatmentStartTextCtrl.SetPosition((18,275))
@@ -137,12 +137,12 @@ class PatientWindow(wx.MiniFrame):
         self.hBox1.Add(self.treatmentStartStaticText,1,8)
         self.hBox2.Add(self.treatmentStartTextCtrl,1,8)
 
-        self.budgetByStaticText = wx.StaticText(self.panelPatient,-1,'Orçado por',pos=(140,250),style=wx.ALIGN_LEFT)
+        self.budgetByStaticText = wx.StaticText(self.panelPatient,-1,u'Orçado por',pos=(140,250),style=wx.ALIGN_LEFT)
         self.budgetByTextCtrl = wx.TextCtrl(self.panelPatient,-1,pos=(140,275),size=(150,-1),style=wx.TE_READONLY)
         self.hBox1.Add(self.budgetByStaticText, 1, wx.LEFT,8)
         self.hBox2.Add(self.budgetByTextCtrl,1, wx.LEFT,8)
 
-        self.registrationFormStaticText = wx.StaticText(self.panelPatient,-1,'Ficha',pos=(320,250),style=wx.ALIGN_LEFT)
+        self.registrationFormStaticText = wx.StaticText(self.panelPatient,-1,u'Ficha',pos=(320,250),style=wx.ALIGN_LEFT)
         self.registrationFormTextCtrl = wx.TextCtrl(self.panelPatient,-1,pos=(320,275),size=(100,-1),style=wx.TE_READONLY)
         self.hBox1.Add(self.registrationFormStaticText, 1,8)
         self.hBox2.Add(self.registrationFormTextCtrl,1,8)
@@ -366,10 +366,7 @@ class PatientWindow(wx.MiniFrame):
         if self.idTextCtrl.GetValue() != '':
 
             if self.valida(int(self.idTextCtrl.GetValue()),self.nameTextCtrl.GetValue(),self.dateOfBirthTextCtrl.GetValue(),
-                           self.streetTextCtrl.GetValue(),self.numberTextCtrl.GetValue(),
-                           self.districtTextCtrl.GetValue(),self.zipCodeTextCtrl.GetValue(),
-                           self.cityTextCtrl.GetValue(),self.stateChoice.GetValue(),
-                           self.telephoneTextCtrl.GetValue(),self.treatmentStartTextCtrl.GetValue(),
+                           self.telephoneTextCtrl.GetValue(),self.telephone2TextCtrl.GetValue(),self.treatmentStartTextCtrl.GetValue(),
                            self.budgetByTextCtrl.GetValue(),self.registrationFormTextCtrl.GetValue()):
 
                 patient1 = Patient.get_by(id=self.idTextCtrl.GetValue())
@@ -386,7 +383,7 @@ class PatientWindow(wx.MiniFrame):
 
                 session.commit()
                 self.refreshIndex(self.idTextCtrl.GetValue())
-                self.message = wx.MessageDialog(None, 'Paciente alterado com sucesso!', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None, u'Paciente alterado com sucesso!', 'Info', wx.OK)
                 self.message.ShowModal()
 
                 self.nameTextCtrl.SetEditable(False)
@@ -425,7 +422,7 @@ class PatientWindow(wx.MiniFrame):
 
                 self.refreshIndex(patient1.id)
                 self.idTextCtrl.SetValue(unicode(patient1.id))
-                self.message = wx.MessageDialog(None, 'Paciente cadastrado com sucesso!', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None, u'Paciente cadastrado com sucesso!', 'Info', wx.OK)
                 self.message.ShowModal()
 
                 self.nameTextCtrl.SetEditable(False)
@@ -455,40 +452,40 @@ class PatientWindow(wx.MiniFrame):
             if (patient1.name.upper() == name.upper()) and ( patient1.id == id):
                 return 1
             else:
-                self.message = wx.MessageDialog(None, 'Já existe um paciente cadastrado com este nome!', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None, u'Já existe um paciente cadastrado com este nome!', 'Info', wx.OK)
                 self.message.ShowModal()
                 self.nameTextCtrl.SetFocus()
                 self.nameTextCtrl.SelectAll()
 
                 return 0
         if name == '':
-            self.message = wx.MessageDialog(None, 'O campo Nome deve ser preenchido!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo Nome deve ser preenchido!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
 
         if dateOfBirth == '  /  /    ':
-            self.message = wx.MessageDialog(None, 'O campo Data de nacimento deve ser preenchido!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo Data de nacimento deve ser preenchido!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
 
         if telephone == '(  )    -    ' and len(telephone)!=13:
-            self.message = wx.MessageDialog(None, 'O campo Telefone deve ser preenchido coretamente!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo Telefone deve ser preenchido coretamente!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
         if telephone2 == '(  )    -    ' and len(telephone2)!=13:
-            self.message = wx.MessageDialog(None, 'O campo Telefone2 deve ser preenchido coretamente!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo Telefone2 deve ser preenchido coretamente!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
         if treatmentStart == '  /  /    ':
-            self.message = wx.MessageDialog(None, 'O campo "Início do Tratamento" deve ser preenchido!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo "Início do Tratamento" deve ser preenchido!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
         if budgetBy == '':
-            self.message = wx.MessageDialog(None, 'O campo "Orçado por" deve ser preenchido!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo "Orçado por" deve ser preenchido!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
         if registrationForm == '':
-            self.message = wx.MessageDialog(None, 'O campo Ficha deve ser preenchido!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo Ficha deve ser preenchido!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
         return 1
@@ -530,7 +527,7 @@ class PatientWindow(wx.MiniFrame):
 
     def remove(self,event):
 
-        remove_dial = wx.MessageDialog(None, 'Tem certeza que deseja excluir este paciente?', 'Sair',
+        remove_dial = wx.MessageDialog(None, u'Tem certeza que deseja excluir este paciente?', 'Sair',
             wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION)
         ret = remove_dial.ShowModal()
         if ret == wx.ID_YES:
@@ -554,10 +551,10 @@ class PatientWindow(wx.MiniFrame):
 
         self.hPatientBox1 = wx.BoxSizer(wx.HORIZONTAL)
         self.listPatient = wx.ListCtrl(self.findDialog,-1,size=(430,280),style=wx.LC_REPORT)
-        self.listPatient.InsertColumn(0, 'Nome', width=205)
-        self.listPatient.InsertColumn(1, 'Orçado Por', width=75)
-        self.listPatient.InsertColumn(2, 'Data de Nasc.', width=90)
-        self.listPatient.InsertColumn(3,'Ficha',width=65)
+        self.listPatient.InsertColumn(0, u'Nome', width=205)
+        self.listPatient.InsertColumn(1, u'Orçado Por', width=75)
+        self.listPatient.InsertColumn(2, u'Data de Nasc.', width=90)
+        self.listPatient.InsertColumn(3,u'Ficha',width=65)
         self.listPatient.InsertColumn(4,'',width=0)
 
         self.hPatientBox1.Add(self.listPatient, 1,wx.EXPAND)
@@ -575,8 +572,8 @@ class PatientWindow(wx.MiniFrame):
         self.listPatient.Bind(wx.EVT_LIST_ITEM_ACTIVATED,self.getSelectedItem,id=-1)
 
         self.hPatientBox2 = wx.BoxSizer(wx.HORIZONTAL)
-        findOptions = ["Nome","Data","RG","CPF"]
-        self.findRadioBox = wx.RadioBox(self.findDialog, -1, "Localizar por:", (10, 300), wx.DefaultSize,findOptions,2, wx.RA_SPECIFY_COLS)
+        findOptions = [u"Nome",u"Data",u"RG",u"CPF"]
+        self.findRadioBox = wx.RadioBox(self.findDialog, -1, u"Localizar por:", (10, 300), wx.DefaultSize,findOptions,2, wx.RA_SPECIFY_COLS)
         self.hPatientBox2.Add(self.findRadioBox,0,wx.RIGHT,8)
         self.vPatientBox1.Add(self.hPatientBox2,0,wx.ALL | wx.EXPAND,5)
 
@@ -602,10 +599,10 @@ class PatientWindow(wx.MiniFrame):
 
     def putMaskInFindTextCtrl(self,event):
 
-        if event.GetString() == "Data":
+        if event.GetString() == u"Data":
             self.findTextCtrl.SetCtrlParameters(mask="##/##/####")
             self.findTextCtrl.SetFocus()
-        elif event.GetString() == "CPF":
+        elif event.GetString() == u"CPF":
             self.findTextCtrl.SetCtrlParameters(mask="###.###.###-##")
             self.findTextCtrl.SetFocus()
         else:
@@ -647,7 +644,7 @@ class PatientWindow(wx.MiniFrame):
         self.finderPatient = self.findTextCtrl.GetValue().strip()
 
         searchFor = self.findRadioBox.GetStringSelection()
-        if searchFor == 'Nome':
+        if searchFor == u'Nome':
             patients = Patient.query.filter(Patient.name.like(self.finderPatient+'%'))
 
             if self.finderPatient == '':
@@ -665,7 +662,7 @@ class PatientWindow(wx.MiniFrame):
                     self.listPatient.SetStringItem(index, 3, patient.registrationForm)
                     self.listPatient.SetStringItem(index, 4, str(patient.id))
 
-        if searchFor == 'Data':
+        if searchFor == u'Data':
             if self.findTextCtrl.GetValue() == '':
                 pass
             else:
@@ -677,7 +674,7 @@ class PatientWindow(wx.MiniFrame):
                     self.listPatient.SetStringItem(index, 3, patient.registrationForm)
                     self.listPatient.SetStringItem(index, 4, str(patient.id))
 
-        if searchFor == 'RG':
+        if searchFor == u'RG':
             if self.findTextCtrl.GetValue() == '':
                 pass
             else:
@@ -691,7 +688,7 @@ class PatientWindow(wx.MiniFrame):
                     self.listPatient.SetStringItem(index, 3, patient.registrationForm)
                     self.listPatient.SetStringItem(index, 4, str(patient.id))
 
-        if searchFor == 'CPF':
+        if searchFor == u'CPF':
             if self.findTextCtrl.GetValue() == '':
                 pass
             else:

@@ -22,7 +22,7 @@ setup_all()
 
 class Login(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self,parent=None,id=wx.ID_ANY,title='Cadastro de Pacientes',style=  wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX | wx.CLIP_CHILDREN)
+        wx.Frame.__init__(self,parent=None,id=wx.ID_ANY,title=u'Cadastro de Pacientes',style=  wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX | wx.CLIP_CHILDREN)
         self.Centre(wx.BOTH)
 
         self.ico=wx.Icon("./imagens/thooth_.ico", wx.BITMAP_TYPE_ICO)
@@ -35,7 +35,7 @@ class Login(wx.Frame):
         self.hBox2 = wx.BoxSizer(wx.HORIZONTAL)
         self.hBox3 = wx.BoxSizer(wx.HORIZONTAL)
 
-        self.labelUser = wx.StaticText(panelLogin,-1,'Usuário: ',pos=(5,34),style=wx.ALIGN_LEFT)
+        self.labelUser = wx.StaticText(panelLogin,-1,u'Usuário: ',pos=(5,34),style=wx.ALIGN_LEFT)
         self.inputUser = wx.TextCtrl(panelLogin,-1,pos=(60,30),size=(180,-1),style=wx.ALIGN_LEFT)
 
         self.hBox1.Add(self.labelUser,1,wx.LEFT,1)
@@ -43,7 +43,7 @@ class Login(wx.Frame):
 
         self.vBox1.Add(self.hBox1,0, wx.EXPAND | wx.ALL, 10)
 
-        self.labelPass = wx.StaticText(panelLogin,-1,'Senha: ',pos=(5,65),style=wx.ALIGN_LEFT)
+        self.labelPass = wx.StaticText(panelLogin,-1,u'Senha: ',pos=(5,65),style=wx.ALIGN_LEFT)
         self.inputPass = wx.TextCtrl(panelLogin,-1,pos=(60,61),size=(180,-1),style=wx.ALIGN_LEFT|wx.TE_PASSWORD)
 
         self.hBox2.Add(self.labelPass,1,wx.LEFT,1)
@@ -51,8 +51,8 @@ class Login(wx.Frame):
 
         self.vBox1.Add(self.hBox2,0, wx.EXPAND | wx.ALL, 10)
 
-        self.btnEntrar = wx.Button(panelLogin,wx.ID_OK,label="Entrar",pos=(40,100))
-        self.btnSair = wx.Button(panelLogin,wx.ID_EXIT,label="Sair",pos=(130,100))
+        self.btnEntrar = wx.Button(panelLogin,wx.ID_OK,label=u"Entrar",pos=(40,100))
+        self.btnSair = wx.Button(panelLogin,wx.ID_EXIT,label=u"Sair",pos=(130,100))
         self.Bind(wx.EVT_BUTTON,self.valida,self.btnEntrar)
         self.Bind(wx.EVT_BUTTON,self.quit,self.btnSair)
 
@@ -92,8 +92,8 @@ class Login(wx.Frame):
         self.Close(True)
 
     def errorLogin(self):
-        self.dialog = wx.MessageDialog(self, "Nome do usuário ou senha inválidos.\nDigite-os novamente.", "Acesso Negado", wx.YES_DEFAULT| wx.ICON_INFORMATION)
+        self.dialog = wx.MessageDialog(self, u"Nome do usuário ou senha inválidos.\nDigite-os novamente.", "Acesso Negado", wx.YES_DEFAULT| wx.ICON_INFORMATION)
         self.dialog.ShowModal()
-        self.inputUser.SetValue('')
-        self.inputPass.SetValue('')
+        self.inputUser.SetValue(u'')
+        self.inputPass.SetValue(u'')
         self.inputUser.SetFocus()

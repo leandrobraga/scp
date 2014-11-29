@@ -30,7 +30,7 @@ ID_TOOLBAR_RESTORE_BACKUP = 103
 class WindowMain(wx.Frame):
 
     def __init__(self,user):
-        wx.Frame.__init__(self,None,-1,'Sistema de Cadastro de Pacientes - ',size=(600,400),style=wx.DEFAULT_FRAME_STYLE | wx.FRAME_NO_WINDOW_MENU  )
+        wx.Frame.__init__(self,None,-1,u'Sistema de Cadastro de Pacientes - ',size=(600,400),style=wx.DEFAULT_FRAME_STYLE | wx.FRAME_NO_WINDOW_MENU  )
 
         self.ico=wx.Icon("./imagens/thooth_.ico", wx.BITMAP_TYPE_ICO)
         self.SetIcon(self.ico)
@@ -46,17 +46,17 @@ class WindowMain(wx.Frame):
 
         self.status = self.CreateStatusBar(number=4)
         self.status.SetStatusText(u"Usuário: "+user.name,1)
-        self.status.SetStatusText("Login: "+user.login,2)
+        self.status.SetStatusText(u"Login: "+user.login,2)
         self.status.SetStatusText(date.today().strftime("%d/%m/%Y"),3)
 
         self.toolBar = wx.ToolBar(self,id=wx.ID_ANY,pos=wx.DefaultPosition,size=wx.DefaultSize,style=wx.TB_TEXT)
-        self.toolBar.AddLabelTool(ID_TOOLBAR_REGISTER_PATIENT,"Cadastro de Paciente", wx.Bitmap("./imagens/patient.png"),shortHelp='Cadastro de Pacientes')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_REGISTER_USER,"Cadastro de Usuário", wx.Bitmap("./imagens/users.png"),shortHelp='Cadastro de Usuário')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_REGISTER_PATIENT,u"Cadastro de Paciente", wx.Bitmap("./imagens/patient.png"),shortHelp='Cadastro de Pacientes')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_REGISTER_USER,u"Cadastro de Usuário", wx.Bitmap("./imagens/users.png"),shortHelp='Cadastro de Usuário')
         self.toolBar.AddSeparator()
         self.toolBar.AddSeparator()
 
-        self.toolBar.AddLabelTool(ID_TOOLBAR_BACKUP,"Backup", wx.Bitmap("./imagens/down.png"),shortHelp='Realiza processo de Backup da base de dados')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_RESTORE_BACKUP,"Restauração de Backup", wx.Bitmap("./imagens/upload.png"),shortHelp='Realiza restauração da base de dados a partir de um arquivo de backup gerado pelo sistema')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_BACKUP,u"Backup", wx.Bitmap("./imagens/down.png"),shortHelp='Realiza processo de Backup da base de dados')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_RESTORE_BACKUP,u"Restauração de Backup", wx.Bitmap("./imagens/upload.png"),shortHelp='Realiza restauração da base de dados a partir de um arquivo de backup gerado pelo sistema')
 
 
         self.Bind(wx.EVT_MENU,self.registerPatientWindow,id=ID_TOOLBAR_REGISTER_PATIENT)
@@ -85,38 +85,38 @@ class WindowMain(wx.Frame):
         userWindow.UserWindow(self)
 
     def backup(self,event):
-        self.message = wx.MessageDialog(None, 'Para realizar o backup da base de dados é altamente recomendado,por motivos de segurança,que você escolha uma unidade diferente de onde está instalada a aplicação!', 'Info', wx.OK)
+        self.message = wx.MessageDialog(None, u'Para realizar o backup da base de dados é altamente recomendado,por motivos de segurança,que você escolha uma unidade diferente de onde está instalada a aplicação!', 'Info', wx.OK)
         self.message.ShowModal()
 
-        dlgDir = wx.DirDialog(None,message="Escolha um diretório")
+        dlgDir = wx.DirDialog(None,message=u"Escolha um diretório")
         if dlgDir.ShowModal() == wx.ID_OK:
             try:
                 shutil.copy(os.getcwd()+'/db/database.sqlite',dlgDir.GetPath())
             except:
-                self.message = wx.MessageDialog(None, 'Houve um erro na realização do seu backup!Por favor tente novamente!', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None, u'Houve um erro na realização do seu backup!Por favor tente novamente!', 'Info', wx.OK)
                 self.message.ShowModal()
                 return 0
-            self.message = wx.MessageDialog(None,'Backup realizado com sucesso!Um arquivo database.sqlite foi gerado no diretório escolhido!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None,u'Backup realizado com sucesso!Um arquivo database.sqlite foi gerado no diretório escolhido!', 'Info', wx.OK)
             self.message.ShowModal()
 
     def restoreBackup(self,event):
-        dlgDirFile = wx.FileDialog(None,message="Selecione o arquivo...",wildcard="*.sqlite")
+        dlgDirFile = wx.FileDialog(None,message=u"Selecione o arquivo...",wildcard="*.sqlite")
         if dlgDirFile.ShowModal() == wx.ID_OK:
             if dlgDirFile.GetFilename() == 'database.sqlite':
                 try:
                     shutil.copy(dlgDirFile.GetPath(),os.getcwd()+'/db')
                 except:
-                    self.message = wx.MessageDialog(None, 'Houve um erro na inesperado na restauração do seu backup!Por favor tente novamente!', 'Info', wx.OK)
+                    self.message = wx.MessageDialog(None, u'Houve um erro na inesperado na restauração do seu backup!Por favor tente novamente!', 'Info', wx.OK)
                     self.message.ShowModal()
                     return 0
-                self.message = wx.MessageDialog(None,'A restauração do Backup foi realizado com sucesso!', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None,u'A restauração do Backup foi realizado com sucesso!', 'Info', wx.OK)
                 self.message.ShowModal()
             else:
-                self.message = wx.MessageDialog(None,'O arquivo de backup deve ter EXATAMENTE o nome:\n\ndatabase.sqlite\n\n Caso este esteja alterado renome-o e repita o processo de Resauração de Backup !', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None,u'O arquivo de backup deve ter EXATAMENTE o nome:\n\ndatabase.sqlite\n\n Caso este esteja alterado renome-o e repita o processo de Resauração de Backup !', 'Info', wx.OK)
                 self.message.ShowModal()
 
     def quit(self,event):
-        close_dial = wx.MessageDialog(None, 'Tem certeza que deseja sair?', 'Sair',
+        close_dial = wx.MessageDialog(None, u'Tem certeza que deseja sair?', 'Sair',
             wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION)
         ret = close_dial.ShowModal()
         if ret == wx.ID_YES:
