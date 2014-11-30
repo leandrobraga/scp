@@ -30,7 +30,7 @@ setup(
             "includes":["sqlite3","sqlalchemy.dialects.sqlite","elixir"],
             "excludes":['_ssl','doctest','optparse','bsddb','compiler',
                         'curses','pickle','calendar','antigravity',
-                        'cgi','base64','bz2',
+                        'cgi','bz2',
                         ],
             "dll_excludes":["msvcr71.dll","API-MS-Win-Core-LocalRegistry-L1-1-0.dll",
     "POWRPROF.dll",

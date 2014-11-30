@@ -42,7 +42,7 @@ class UserWindow(wx.MiniFrame):
 
     def __init__(self,parent):
 
-        wx.MiniFrame.__init__(self,parent,id=wx.ID_ANY,size=(790,300),pos=(300,170),title="Cadastro de Usuários",style= wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX | wx.CLIP_CHILDREN)
+        wx.MiniFrame.__init__(self,parent,id=wx.ID_ANY,size=(790,300),pos=(300,170),title=u"Cadastro de Usuários",style= wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX | wx.CLIP_CHILDREN)
 
         self.currentIndex = 0
         self.totalIndex = len(User.query.all())-1
@@ -55,20 +55,20 @@ class UserWindow(wx.MiniFrame):
 
         self.toolBar = wx.ToolBar(self,id=wx.ID_ANY,pos=wx.DefaultPosition,size=wx.DefaultSize,style=wx.TB_TEXT)
 
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_FIRST,"Primeiro", wx.Bitmap("./imagens/first.png"),shortHelp='Ir para o primeiro registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_PREVIOUS,"Anterior", wx.Bitmap("./imagens/previous.png"),shortHelp='Registro anterior')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_NEXT,"Próximo", wx.Bitmap("./imagens/next.png"),shortHelp='Próximo registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_LAST,"Último", wx.Bitmap("./imagens/last.png"),shortHelp='Ir para o último registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_FIRST,u"Primeiro", wx.Bitmap("./imagens/first.png"),shortHelp='Ir para o primeiro registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_PREVIOUS,u"Anterior", wx.Bitmap("./imagens/previous.png"),shortHelp='Registro anterior')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_NEXT,u"Próximo", wx.Bitmap("./imagens/next.png"),shortHelp='Próximo registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_LAST,u"Último", wx.Bitmap("./imagens/last.png"),shortHelp='Ir para o último registro')
         self.toolBar.AddSeparator()
         self.toolBar.AddSeparator()
 
 
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_NEW,"Novo (F2)", wx.Bitmap("./imagens/add.png"),shortHelp='Novo Registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_SAVE,"Salvar", wx.Bitmap("./imagens/filesave.png"),shortHelp='Grava alterções no registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_REMOVE,"Remover", wx.Bitmap("./imagens/remove.png"),shortHelp='Remove o registro atual')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_FIND,"Localizar", wx.Bitmap("./imagens/find.png"),shortHelp='Localiza um Registro')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_EDIT,"ALterar", wx.Bitmap("./imagens/edit.png"),shortHelp='Altera o registro atual')
-        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_CANCEL,"Cancelar", wx.Bitmap("./imagens/cancel.png"),shortHelp='Cancela ação')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_NEW,u"Novo", wx.Bitmap("./imagens/add.png"),shortHelp='Novo Registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_SAVE,u"Salvar", wx.Bitmap("./imagens/filesave.png"),shortHelp='Grava alterções no registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_REMOVE,u"Remover", wx.Bitmap("./imagens/remove.png"),shortHelp='Remove o registro atual')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_FIND,u"Localizar", wx.Bitmap("./imagens/find.png"),shortHelp='Localiza um Registro')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_EDIT,u"ALterar", wx.Bitmap("./imagens/edit.png"),shortHelp='Altera o registro atual')
+        self.toolBar.AddLabelTool(ID_TOOLBAR_USER_CANCEL,u"Cancelar", wx.Bitmap("./imagens/cancel.png"),shortHelp='Cancela ação')
 
         self.toolBar.EnableTool(ID_TOOLBAR_USER_SAVE, False)
 
@@ -83,34 +83,34 @@ class UserWindow(wx.MiniFrame):
         self.idTextCtrl = wx.TextCtrl(self.panelUser,-1,pos=(10,15),size=(0,0))
         self.hBox2.Add( self.idTextCtrl,1, wx.LEFT,8)
 
-        self.nameStaticText = wx.StaticText(self.panelUser,-1,'Nome',pos=(18,30),style=wx.ALIGN_LEFT)
+        self.nameStaticText = wx.StaticText(self.panelUser,-1,u'Nome',pos=(18,30),style=wx.ALIGN_LEFT)
         self.nameTextCtrl = wx.TextCtrl(self.panelUser,-1,pos=(18,50),size=(300,-1),style=wx.TE_READONLY)
         self.hBox1.Add(self.nameStaticText, 1, wx.LEFT,8)
         self.hBox2.Add( self.nameTextCtrl,1, wx.LEFT,8)
 
-        self.loginStaticText = wx.StaticText(self.panelUser,-1,'Login',pos=(18,80),style=wx.ALIGN_LEFT)
+        self.loginStaticText = wx.StaticText(self.panelUser,-1,u'Login',pos=(18,80),style=wx.ALIGN_LEFT)
         self.loginTextCtrl = wx.TextCtrl(self.panelUser,-1,pos=(18,100),size=(150,-1),style=wx.TE_READONLY)
         self.hBox1.Add(self.loginStaticText, 1, wx.LEFT,8)
         self.hBox2.Add( self.loginTextCtrl,1, wx.LEFT,8)
 
-        self.cb = wx.CheckBox(self.panelUser, label='Administrador', pos=(200, 105))
+        self.cb = wx.CheckBox(self.panelUser, label=u'Administrador', pos=(200, 105))
         self.cb.Disable()
 
-        self.passwordStaticText = wx.StaticText(self.panelUser,-1,'Senha',pos=(18,140),style=wx.ALIGN_LEFT)
+        self.passwordStaticText = wx.StaticText(self.panelUser,-1,u'Senha',pos=(18,140),style=wx.ALIGN_LEFT)
         self.passwordTextCtrl = wx.TextCtrl(self.panelUser,-1,pos=(18,160),size=(100,-1),style=wx.TE_PASSWORD)
         self.passwordTextCtrl.Disable()
         self.passwordTextCtrl.SetEditable(False)
         self.hBox1.Add(self.passwordStaticText, 1, wx.LEFT,8)
         self.hBox2.Add( self.passwordTextCtrl,1, wx.LEFT,8)
 
-        self.confirmPasswordStaticText = wx.StaticText(self.panelUser,-1,'Confirma Senha',pos=(200,140),style=wx.ALIGN_LEFT)
+        self.confirmPasswordStaticText = wx.StaticText(self.panelUser,-1,u'Confirma Senha',pos=(200,140),style=wx.ALIGN_LEFT)
         self.confirmPasswordTextCtrl = wx.TextCtrl(self.panelUser,-1,pos=(200,160),size=(100,-1),style=wx.TE_PASSWORD)
         self.confirmPasswordTextCtrl.Disable()
         self.confirmPasswordTextCtrl.SetEditable(False)
         self.hBox1.Add(self.confirmPasswordStaticText, 1, wx.LEFT,8)
         self.hBox2.Add( self.confirmPasswordTextCtrl,1, wx.LEFT,8)
 
-        self.btnChangePassword = wx.Button(self.panelUser,label="Redefinir Senha",pos=(350,160))
+        self.btnChangePassword = wx.Button(self.panelUser,label=u"Redefinir Senha",pos=(350,160))
         self.btnChangePassword.Disable()
 
         wx.StaticBox(self.panelUser,-1,'',pos=(5,5),size=(600,200))
@@ -288,7 +288,7 @@ class UserWindow(wx.MiniFrame):
 
                 session.commit()
                 self.refreshIndex(self.idTextCtrl.GetValue())
-                self.message = wx.MessageDialog(None, 'Usuário alterado com sucesso!', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None, u'Usuário alterado com sucesso!', 'Info', wx.OK)
                 self.message.ShowModal()
 
                 self.idTextCtrl.SetEditable(False)
@@ -326,7 +326,7 @@ class UserWindow(wx.MiniFrame):
 
                 self.refreshIndex(user1.id)
                 self.idTextCtrl.SetValue(unicode(user1.id))
-                self.message = wx.MessageDialog(None, 'Usuário cadastrado com sucesso!', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None, u'Usuário cadastrado com sucesso!', 'Info', wx.OK)
                 self.message.ShowModal()
 
                 self.idTextCtrl.SetEditable(False)
@@ -354,7 +354,7 @@ class UserWindow(wx.MiniFrame):
 
     def valida(self,id,name,login):
         if name =='':
-            self.message = wx.MessageDialog(None, 'O campo nome deve ser preenchido!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo nome deve ser preenchido!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
         user1 = User.query.filter(User.name.like(name)).first()
@@ -362,12 +362,12 @@ class UserWindow(wx.MiniFrame):
             if (user1.name.upper() == name.upper()) and ( user1.id == id):
                 return 1
             else:
-                self.message = wx.MessageDialog(None, 'Já existe um usuário cadastrado com este nome!', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None, u'Já existe um usuário cadastrado com este nome!', 'Info', wx.OK)
                 self.message.ShowModal()
                 return 0
 
         if login =='':
-            self.message = wx.MessageDialog(None, 'O campo login deve ser preenchido!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo login deve ser preenchido!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
         user1 = User.query.filter(User.login.like(login)).first()
@@ -375,7 +375,7 @@ class UserWindow(wx.MiniFrame):
             if (user1.login.upper() == login.upper()) and ( user1.id == id):
                 return 1
             else:
-                self.message = wx.MessageDialog(None, 'Já existe um usuário cadastrado com este login!', 'Info', wx.OK)
+                self.message = wx.MessageDialog(None, u'Já existe um usuário cadastrado com este login!', 'Info', wx.OK)
                 self.message.ShowModal()
                 return 0
 
@@ -383,13 +383,13 @@ class UserWindow(wx.MiniFrame):
 
     def validaPassword(self,password,confirmPassword):
         if len(password) <6:
-            self.message = wx.MessageDialog(None, 'A senha deve ter no mínimo 6 caracteres!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'A senha deve ter no mínimo 6 caracteres!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
 
 
         if password != confirmPassword:
-            self.message = wx.MessageDialog(None, 'O campo Senha e Confirma Senha devem ser iguais!', 'Info', wx.OK)
+            self.message = wx.MessageDialog(None, u'O campo Senha e Confirma Senha devem ser iguais!', 'Info', wx.OK)
             self.message.ShowModal()
             return 0
         return 1
@@ -458,7 +458,7 @@ class UserWindow(wx.MiniFrame):
         self.confirmPasswordTextCtrl.Enable()
 
     def remove(self,event):
-        remove_dial = wx.MessageDialog(None, 'Tem certeza que deseja excluir o usuário?', 'Sair',
+        remove_dial = wx.MessageDialog(None, u'Tem certeza que deseja excluir o usuário?', 'Sair',
             wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION)
         ret = remove_dial.ShowModal()
         if ret == wx.ID_YES:
@@ -482,9 +482,9 @@ class UserWindow(wx.MiniFrame):
 
         self.hUserBox1 = wx.BoxSizer(wx.HORIZONTAL)
         self.listUser = wx.ListCtrl(self.findDialog,-1,size=(430,280),style=wx.LC_REPORT)
-        self.listUser.InsertColumn(0, 'Nome', width=150)
-        self.listUser.InsertColumn(1, 'Login', width=200)
-        self.listUser.InsertColumn(2, 'Administrador', width=75)
+        self.listUser.InsertColumn(0, u'Nome', width=150)
+        self.listUser.InsertColumn(1, u'Login', width=200)
+        self.listUser.InsertColumn(2, u'Administrador', width=75)
         self.listUser.InsertColumn(3,'',width=0)
 
         self.hUserBox1.Add(self.listUser, 1,wx.EXPAND)
@@ -497,16 +497,16 @@ class UserWindow(wx.MiniFrame):
             index = self.listUser.InsertStringItem(sys.maxint, user.name)
             self.listUser.SetStringItem(index, 1, user.login)
             if user.level == 0:
-                self.listUser.SetStringItem(index, 2, "Sim")
+                self.listUser.SetStringItem(index, 2, u"Sim")
             else:
-                self.listUser.SetStringItem(index, 2, "Não")
+                self.listUser.SetStringItem(index, 2, u"Não")
             self.listUser.SetStringItem(index, 3, str(user.id))
 
         self.listUser.Bind(wx.EVT_LIST_ITEM_ACTIVATED,self.getSelectedItem,id=-1)
 
         self.hUserBox2 = wx.BoxSizer(wx.HORIZONTAL)
         findOptions = ["Nome"]
-        self.findRadioBox = wx.RadioBox(self.findDialog, -1, "Localizar por:", (10, 300), wx.DefaultSize,findOptions,2, wx.RA_SPECIFY_COLS)
+        self.findRadioBox = wx.RadioBox(self.findDialog, -1, u"Localizar por:", (10, 300), wx.DefaultSize,findOptions,2, wx.RA_SPECIFY_COLS)
         self.hUserBox2.Add(self.findRadioBox,0,wx.RIGHT,8)
         self.vUserBox1.Add(self.hUserBox2,0,wx.ALL | wx.EXPAND,5)
 
@@ -556,9 +556,9 @@ class UserWindow(wx.MiniFrame):
                 index = self.listUser.InsertStringItem(sys.maxint, user.name)
                 self.listUser.SetStringItem(index, 1, user.login)
                 if user.level == 0:
-                    self.listUser.SetStringItem(index, 2, "Sim")
+                    self.listUser.SetStringItem(index, 2, u"Sim")
                 else:
-                    self.listUser.SetStringItem(index, 2, "Não")
+                    self.listUser.SetStringItem(index, 2, u"Não")
                 self.listUser.SetStringItem(index, 3, str(user.id))
         else:
             for user in users:
@@ -566,9 +566,9 @@ class UserWindow(wx.MiniFrame):
                     index = self.listUser.InsertStringItem(sys.maxint, user.name)
                     self.listUser.SetStringItem(index, 1, user.login)
                     if user.level == 0:
-                        self.listUser.SetStringItem(index, 2, "Sim")
+                        self.listUser.SetStringItem(index, 2, u"Sim")
                     else:
-                        self.listUser.SetStringItem(index, 2, "Não")
+                        self.listUser.SetStringItem(index, 2, u"Não")
                     self.listUser.SetStringItem(index, 3, str(user.id))
 
     def quit(self,event):
